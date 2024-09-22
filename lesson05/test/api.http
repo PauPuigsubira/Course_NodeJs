@@ -1,0 +1,114 @@
+### Get all movies
+GET http://localhost:1234/movies
+
+### Get one film by id (404 expected)
+GET http://localhost:1234/movies/1
+
+### Get one film by id (200 expexted)
+GET http://localhost:1234/movies/77ed7a0c-65cf-11ef-b1ce-3c77e6d8e98f
+
+### Get one film by id (200 expexted)
+GET http://localhost:1234/movies/E94B7A3A-B54C-4598-AB25-356C2727A586
+
+### GET all movies for an specific genre (404 expected)
+GET http://localhost:1234/movies?genre=terror
+
+### GET all movies for an specific genre (200 expected)
+GET http://localhost:1234/movies?genre=action
+
+### POST Create a movie  (400 expected)
+POST http://localhost:1234/movies
+Content-type : application/json
+
+{
+//    "id": "6a360a18-c645-4b47-9a7b-2a71babbf3e0",
+    "title": "ERROR The Emoji Movie",
+    "year": 1017,
+    "director": "Tony Leondis",
+    "duration": -86,
+    "poster": "https://m.media-amazon.com/images/I/81KdmiQh+jL._SX342_.jpg",
+    "genre": [
+      "terror"
+    ],
+    "rate": 3.4
+  }
+  
+### POST Create a movie (with sql not part of the object. Expected igonre the field)
+POST http://localhost:1234/movies
+Content-type : application/json
+
+{
+  "sql": "Delete from users",
+//    "id": "6a360a18-c645-4b47-9a7b-2a71babbf3e0",
+    "title": "The Emoji Movie",
+    "year": 2017,
+    "director": "Tony Leondis",
+    "duration": 86,
+    "poster": "https://m.media-amazon.com/images/I/81KdmiQh+jL._SX342_.jpg",
+    "genre": [
+      "Action",
+      "Adventure",
+      "Fantasy",
+      "Comedy"
+    ],
+    "rate": 3.4
+  }
+
+### POST Create a movie
+POST http://localhost:1234/movies
+Content-type : application/json
+
+{
+//    "id": "6a360a18-c645-4b47-9a7b-2a71babbf3e0",
+    "title": "The Emoji Movie",
+    "year": 2017,
+    "director": "Tony Leondis",
+    "duration": 86,
+    "poster": "https://m.media-amazon.com/images/I/81KdmiQh+jL._SX342_.jpg",
+    "genre": [
+      "Action",
+      "Adventure",
+      "Fantasy",
+      "Comedy"
+    ],
+    "rate": 3.4
+  }
+
+### UPDATE a part of the movie (PATCH) [expected not updated]
+PATCH http://localhost:1234/movies/5ad1a235-0d9c-410a-b32b-220d91689a08
+Content-type : application/json
+
+{
+    "id": 123,
+    "year": 2017
+}
+
+### UPDATE a part of the movie (PATCH) [expected ok]
+PATCH http://localhost:1234/movies/77ed7a0c-65cf-11ef-b1ce-3c77e6d8e98f
+Content-type : application/json
+
+{
+    "id": 123,
+    "year": 2017
+}
+
+### UPDATE a part of the movie (PATCH) [expected ok]
+PATCH http://localhost:1234/movies/77ed7a0c-65cf-11ef-b1ce-3c77e6d8e98f
+Content-type : application/json
+
+{
+    "sql": "Delete from users",
+    "id": 123,
+    "year": 2017,
+    "genre": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ]    
+}
+
+### DELETE a FILM (expected KO)
+DELETE  http://localhost:1234/movies/1
+
+### DELETE a FILM
+DELETE  http://localhost:1234/movies/1bcd01e2-6cf6-11ef-8efe-3c77e6d8e98f

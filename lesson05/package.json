@@ -1,0 +1,30 @@
+{
+  "name": "lesson03",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start:mysql": "node --watch server-with-mysql.js",
+    "start:local": "node --watch server-with-local.js",
+    "start:mongo": "node --watch server-with-mongo.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "standard": "^17.1.0"
+  },
+  "dependencies": {
+    "cors": "2.8.5",
+    "dotenv": "16.4.5",
+    "express": "^4.21.0",
+    "mongodb": "6.8.0",
+    "mysql2": "^3.11.0",
+    "zod": "3.23.8"
+  },
+  "eslintConfig": {
+    "extends": "standard"
+  }
+}
